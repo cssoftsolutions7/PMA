@@ -78,20 +78,20 @@
       "RouteClaimsRequirement": {
         "Role": "Admin"
       }
-    }
+    },
 
-    //{
-    //  "DownStreamPathTemplate": "/api/Country",
-    //  "DownStreamScheme": "https",
-    //  "DownStreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": "7102"
-    //    }
-    //  ],
-    //  "UpStreamPathTemplate": "/Gateway/Country",
-    //  "UpStreamHttpMethod": [ "GET", "POST" ]
-    //},
+    {
+      "DownStreamPathTemplate": "/api/UserRegistration",
+      "DownStreamScheme": "https",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7135"
+        }
+      ],
+      "UpStreamPathTemplate": "/Gateway/Registration",
+      "UpStreamHttpMethod": [ "GET", "POST" ]
+    }
 
     //{
     //  "DownStreamPathTemplate": "/api/GenderType",
