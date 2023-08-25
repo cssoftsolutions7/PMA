@@ -17,6 +17,6 @@ namespace PMA_Core.Models
         public string RoleName { get; set; }
 
         // Navigation property for users with this role
-        public ICollection<PMA_User> Users { get; set; }
+        public ICollection<PMA_User>? Users { get; set; }
     }
 }

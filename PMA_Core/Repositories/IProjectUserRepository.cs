@@ -10,5 +10,6 @@ namespace PMA_Core.Repositories
     {
         Task<bool> AssignmentExistsAsync(int projectId, int userId);
         Task CreateAssignmentAsync(int projectId, int userId);
+        Task DeleteAssignmentAsync(int projectId, int userId);
     }
 }

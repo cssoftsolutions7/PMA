@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PMA_Core.Models;
 using PMA_Data;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using PMA_Core.DTOs.ProjectToUser;
 
 namespace PMA_Backend.TestingControllers
 {
@@ -111,5 +115,74 @@ namespace PMA_Backend.TestingControllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<PMA_Project>>> GetProjectsByUser(int userId)
+        {
+            var user = await _context.PMA_Users
+                .Include(u => u.UserProjects)
+                .ThenInclude(up => up.Project)
+                .FirstOrDefaultAsync(u => u.UserID == userId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var projects = user.UserProjects.Select(up => up.Project).ToList();
+
+            // Select only the relevant properties for the projects
+            var simplifiedProjects = projects.Select(project => new
+            {
+                project.ProjectID,
+                project.ProjectName,
+                project.Description,
+                project.StartDate,
+                project.EndDate
+            }).ToList();
+
+            return Ok(simplifiedProjects);
+        }
+
+        [HttpGet("project/{projectId}/users")]
+        public async Task<ActionResult<IEnumerable<ProjectToUserDTO>>> GetUsersAssignedToProject(int projectId)
+        {
+            var project = await _context.PMA_Projects
+                .Include(p => p.ProjectUsers)
+                .ThenInclude(j => j.User)
+                .FirstOrDefaultAsync(p => p.ProjectID == projectId);
+
+            if (project == null)
+            {
+                return NotFound("Project not found");
+            }
+
+            var users = project.ProjectUsers.Select(j => j.User)
+                .Select(user => new ProjectToUserDTO
+                {
+                    UserID = user.UserID,
+                    UserName = user.FirstName +" "+ user.LastName,
+                    // Map other user properties here
+                });
+
+            return Ok(users);
+        }
+
+        [HttpGet("users")]
+        public async Task<ActionResult<IEnumerable<ProjectToUserDTO>>> GetAllUsers()
+        {
+            var users = await _context.PMA_Users
+                .Select(user => new ProjectToUserDTO
+                {
+                    UserID = user.UserID,
+                    UserName = user.FirstName + " " + user.LastName,
+                    // Map other user properties here
+                })
+                .ToListAsync();
+
+            return Ok(users);
+        }
+
+
     }
 }

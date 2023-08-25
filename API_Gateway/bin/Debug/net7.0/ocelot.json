@@ -1,0 +1,114 @@
+{
+  "Routes": [
+    //For JWT Authentication//
+    {
+      "DownStreamPathTemplate": "/api/Account",
+      "DownStreamScheme": "https",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7135"
+        }
+      ],
+      "UpStreamPathTemplate": "/Gateway/Authentication",
+      "UpStreamHttpMethod": [ "POST" ]
+    },
+
+
+    //API Routes//
+    {
+      "DownStreamPathTemplate": "/api/Project",
+      "DownStreamScheme": "https",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7135"
+        }
+      ],
+      "UpStreamPathTemplate": "/Gateway/GetProjectList",
+      "UpStreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        //This is For JWT Authentication//
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    },
+
+    {
+      "DownStreamPathTemplate": "/api/Project/allprojects",
+      "DownStreamScheme": "https",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7135"
+        }
+      ],
+      "UpStreamPathTemplate": "/Gateway/GetAllProjectsWithTasks",
+      "UpStreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        //This is For JWT Authentication//
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+      //"UpstreamClaimsToMatch": "Role = Admin Role= User" ///For Giving permission to Multiple Roles!!
+    },
+
+    {
+      "DownStreamPathTemplate": "/api/Project/{projectId}",
+      "DownStreamScheme": "https",
+      "DownStreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7135"
+        }
+      ],
+      "UpStreamPathTemplate": "/Gateway/EditProject/{projectId}",
+      "UpStreamHttpMethod": [ "PUT" ],
+      "AuthenticationOptions": {
+        //This is For JWT Authentication//
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      }
+    }
+
+    //{
+    //  "DownStreamPathTemplate": "/api/Country",
+    //  "DownStreamScheme": "https",
+    //  "DownStreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": "7102"
+    //    }
+    //  ],
+    //  "UpStreamPathTemplate": "/Gateway/Country",
+    //  "UpStreamHttpMethod": [ "GET", "POST" ]
+    //},
+
+    //{
+    //  "DownStreamPathTemplate": "/api/GenderType",
+    //  "DownStreamScheme": "https",
+    //  "DownStreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": "7102"
+    //    }
+    //  ],
+    //  "UpStreamPathTemplate": "/Gateway/GenderType",
+    //  "UpStreamHttpMethod": [ "GET", "POST" ]
+    //}
+  ]
+
+  //"GlobalConfiguration": {
+  //  "BaseUrl": "https://localhost:7878"
+  //}
+
+}

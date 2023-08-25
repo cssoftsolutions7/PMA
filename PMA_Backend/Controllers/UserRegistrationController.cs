@@ -16,12 +16,10 @@ namespace PMA_Backend.Controllers
     public class UserRegistrationController : ControllerBase
     {
         private readonly UserRegistrationService _registrationService;
-        private readonly ApplicationDbContext _context;
 
-        public UserRegistrationController(UserRegistrationService registrationService, ApplicationDbContext context)
+        public UserRegistrationController(UserRegistrationService registrationService)
         {
             _registrationService = registrationService;
-            _context = context;
         }
 
         [HttpPost]

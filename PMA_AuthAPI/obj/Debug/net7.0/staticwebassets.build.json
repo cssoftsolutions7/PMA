@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MyK4+DapkQQxfp0zimj6k/5cP13StAWQhLIRKGUKD2c=",
+  "Source": "PMA_AuthAPI",
+  "BasePath": "_content/PMA_AuthAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

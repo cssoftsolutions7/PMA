@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace PMA_Core.DTOs
 {
-    public class ProjectDto
+    public class ProjectDTO
     {
-        [Key]
         public int ProjectID { get; set; }
-
-        [Required]
-        [MaxLength(100)]
         public string ProjectName { get; set; }
-
         public string Description { get; set; }
-
         public DateTime? StartDate { get; set; }
-
         public DateTime? EndDate { get; set; }
+        public List<TaskDTO> Tasks { get; set; }
     }
 }

@@ -27,27 +27,18 @@ namespace PMA_Backend.Controllers
         public async Task<ActionResult<PMA_Task>> GetTaskById(int taskId)
         {
             var task = await _taskService.GetTaskByIdAsync(taskId);
-
             if (task == null)
             {
                 return NotFound();
             }
-
             return Ok(task);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTask(PMA_Task task)
+        public async Task<ActionResult<PMA_Task>> CreateTask(PMA_Task task)
         {
-            try
-            {
-                await _taskService.CreateTaskAsync(task);
-                return CreatedAtAction(nameof(GetTaskById), new { taskId = task.TaskID }, task);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _taskService.CreateTaskAsync(task);
+            return CreatedAtAction(nameof(GetTaskById), new { taskId = task.TaskID }, task);
         }
 
         [HttpPut("{taskId}")]
@@ -61,10 +52,6 @@ namespace PMA_Backend.Controllers
             catch (ApplicationException ex)
             {
                 return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
             }
         }
 

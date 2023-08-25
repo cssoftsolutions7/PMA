@@ -22,3 +22,15 @@ D:\PMA\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.dll
 D:\PMA\PMA\PMA_Core\obj\Debug\net7.0\refint\PMA_Core.dll
 D:\PMA\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.pdb
 D:\PMA\PMA\PMA_Core\obj\Debug\net7.0\ref\PMA_Core.dll
+D:\Angular\PMA_Updated\PMA\PMA_Core\bin\Debug\net7.0\PMA_Core.deps.json
+D:\Angular\PMA_Updated\PMA\PMA_Core\bin\Debug\net7.0\PMA_Core.dll
+D:\Angular\PMA_Updated\PMA\PMA_Core\bin\Debug\net7.0\PMA_Core.pdb
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.csproj.AssemblyReference.cache
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.AssemblyInfoInputs.cache
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.AssemblyInfo.cs
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.csproj.CoreCompileInputs.cache
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.dll
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\refint\PMA_Core.dll
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\PMA_Core.pdb
+D:\Angular\PMA_Updated\PMA\PMA_Core\obj\Debug\net7.0\ref\PMA_Core.dll

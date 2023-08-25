@@ -1,4 +1,5 @@
-﻿using PMA_Core.Models;
+﻿using PMA_Core.DTOs;
+using PMA_Core.Models;
 using PMA_Core.Repositories;
 using PMA_Data.Implementations;
 using System;
@@ -19,6 +20,11 @@ namespace PMA_Services.Services
         public async Task<IEnumerable<PMA_Project>> GetAllProjectsAsync()
         {
             return await _projectRepository.GetAllProjectsAsync();
+
+        }
+        public async Task<IEnumerable<ProjectDTO>> GetProjectsWithTasksAsync()
+        {
+            return await _projectRepository.GetAllProjectsWithTasksAsync();
         }
 
         public async Task<PMA_Project> GetProjectByIdAsync(int projectId)

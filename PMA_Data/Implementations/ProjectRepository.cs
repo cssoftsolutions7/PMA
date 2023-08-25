@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PMA_Core.DTOs;
 using PMA_Core.Models;
 using PMA_Core.Repositories;
 using System;
@@ -35,6 +36,30 @@ namespace PMA_Data.Implementations
         public async Task<IEnumerable<PMA_Project>> GetAllProjectsAsync()
         {
             return await _context.PMA_Projects.ToListAsync();
+            //return await _context.PMA_Projects.Include(p => p.Tasks).ToListAsync();
+        }
+
+        public async Task<IEnumerable<ProjectDTO>> GetAllProjectsWithTasksAsync()
+        {
+            return await _context.PMA_Projects
+                .Include(p => p.Tasks)
+                .Select(p => new ProjectDTO
+                {
+                    ProjectID = p.ProjectID,
+                    ProjectName = p.ProjectName,
+                    Description = p.Description,
+                    StartDate = p.StartDate,
+                    EndDate = p.EndDate,
+                    Tasks = p.Tasks.Select(t => new TaskDTO
+                    {
+                        TaskID = t.TaskID,
+                        TaskName = t.TaskName,
+                        Description = t.Description,
+                        DueDate = t.DueDate,
+                        Status = t.Status
+                    }).ToList()
+                })
+                .ToListAsync();
         }
 
         public async Task<PMA_Project> GetProjectByIdAsync(int projectId)

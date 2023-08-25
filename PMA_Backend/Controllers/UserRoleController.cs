@@ -18,17 +18,17 @@ namespace PMA_Backend.Controllers
         {
             _roleService = roleService;
             _mapper = mapper;
-
         }
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PMA_UserRole>>> GetAllRolesAsync()
+        public async Task<ActionResult<IEnumerable<PMA_UserRole>>> GetAllRoles()
         {
             var roles = await _roleService.GetAllRolesAsync();
             return Ok(roles);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PMA_UserRole>> GetRoleAsync(int id)
+        public async Task<ActionResult<PMA_UserRole>> GetRole(int id)
         {
             var role = await _roleService.GetRoleAsync(id);
             if (role == null)
@@ -39,20 +39,16 @@ namespace PMA_Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserRoleDTO>> CreateRoleAsync(UserRoleDTO roleDTO)
+        public async Task<ActionResult<PMA_UserRole>> CreateRole(UserRoleDTO roleDTO)
         {
-            if (roleDTO == null)
-            {
-                return BadRequest();
-            }
             var role = _mapper.Map<PMA_UserRole>(roleDTO);
             var createdRole = await _roleService.CreateRoleAsync(role);
 
-            return CreatedAtAction(nameof(GetRoleAsync), new { id = createdRole.RoleID }, createdRole);
+            return CreatedAtAction(nameof(GetRole), new { id = createdRole.RoleID }, createdRole);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRoleAsync(int id, PMA_UserRole role)
+        public async Task<IActionResult> UpdateRole(int id, PMA_UserRole role)
         {
             if (id != role.RoleID)
             {
@@ -70,7 +66,7 @@ namespace PMA_Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoleAsync(int id)
+        public async Task<IActionResult> DeleteRole(int id)
         {
             var result = await _roleService.DeleteRoleAsync(id);
 
@@ -81,6 +77,5 @@ namespace PMA_Backend.Controllers
 
             return NoContent();
         }
-
     }
 }

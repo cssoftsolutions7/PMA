@@ -25,7 +25,21 @@ namespace PMA_Backend.Controllers
                 return Conflict("Assignment already exists.");
             }
 
-            return Ok("Project assigned to user successfully.");
+            return Ok();
+        }
+
+        [HttpDelete("remove")]
+        public async Task<IActionResult> RemoveProjectAssignment(int projectId, int userId)
+        {
+            var assignmentRemoved = await _projectUserService.RemoveProjectAssignmentAsync(projectId, userId);
+
+            if (assignmentRemoved)
+            {
+                return NoContent();
+            }
+
+            return NotFound("Assignment doesn't exist.");
         }
     }
+
 }

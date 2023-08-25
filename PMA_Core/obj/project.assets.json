@@ -313,23 +313,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hacke\\.nuget\\packages\\": {},
+    "C:\\Users\\Dotnet.CSPC393\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PMA\\PMA\\PMA_Core\\PMA_Core.csproj",
+      "projectUniqueName": "D:\\Angular\\PMA_Updated\\PMA\\PMA_Core\\PMA_Core.csproj",
       "projectName": "PMA_Core",
-      "projectPath": "D:\\PMA\\PMA\\PMA_Core\\PMA_Core.csproj",
-      "packagesPath": "C:\\Users\\hacke\\.nuget\\packages\\",
-      "outputPath": "D:\\PMA\\PMA\\PMA_Core\\obj\\",
+      "projectPath": "D:\\Angular\\PMA_Updated\\PMA\\PMA_Core\\PMA_Core.csproj",
+      "packagesPath": "C:\\Users\\Dotnet.CSPC393\\.nuget\\packages\\",
+      "outputPath": "D:\\Angular\\PMA_Updated\\PMA\\PMA_Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hacke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dotnet.CSPC393\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -382,7 +382,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

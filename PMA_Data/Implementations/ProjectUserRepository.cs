@@ -33,5 +33,17 @@ namespace PMA_Data.Implementations
             _context.PMA_ProjectUserJunctions.Add(projectUser);
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteAssignmentAsync(int projectId, int userId)
+        {
+            var projectUser = await _context.PMA_ProjectUserJunctions
+                .FirstOrDefaultAsync(pu => pu.ProjectID == projectId && pu.UserID == userId);
+
+            if (projectUser != null)
+            {
+                _context.PMA_ProjectUserJunctions.Remove(projectUser);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

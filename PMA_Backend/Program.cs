@@ -31,7 +31,25 @@ builder.Services.AddScoped<ProjectUserService>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<TaskService>();
 
+builder.Services.AddScoped<ITokenHandlerRepository, TokenHandlerRepository>();
+builder.Services.AddScoped<TokenHandlerService>();
+
 builder.Services.AddAutoMapper(typeof(DtoMappingProfiles));
+
+builder.Services.AddCustomJwtAuth();
+
+// Added CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy",
+    builder =>
+    {
+        builder.WithOrigins()
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -46,6 +64,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Added in Middleware
+app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
 

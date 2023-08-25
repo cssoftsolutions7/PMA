@@ -33,14 +33,6 @@ namespace PMA_Backend.Controllers
         [HttpPut("{userId}")]
         public async Task<IActionResult> UpdateUserProfile(int userId, PMA_UserProfileUpdate updatedProfile)
         {
-            // Check if the user making the request matches the target user (authorization logic)
-            //var currentUserId = int.Parse(User.FindFirst("sub").Value);
-
-            //if (currentUserId != userId)
-            //{
-            //    return Forbid(); // Or return some other appropriate status code
-            //}
-
             try
             {
                 await _profileService.UpdateUserProfileAsync(userId, updatedProfile);
